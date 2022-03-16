@@ -10,8 +10,8 @@ db = SQLAlchemy(app)
 
 class Flashcards(db.Model):
 
-    name = db.Column(db.String(200), primary_key=True) 
-    question = db.Column(db.String(500),nullable=False) #nullable means user cannot leave it blank
+    id = db.Column(db.String(200), primary_key=True) 
+    content = db.Column(db.String(500),nullable=False) #nullable means user cannot leave it blank
     answer = db.Column(db.String(500),nullable=False) #nullable means user cannot leave it blank
 
     def __repr__(self):
@@ -34,8 +34,8 @@ def index():
             return "There was an issue adding your flashcard"
 
     else:
-        tasks = Flashcards.query.all()
-        return render_template("index.html",tasks=tasks)
+        # tasks = Flashcards.query().all()
+        return render_template("index.html") # ,tasks=tasks
 
 if __name__ == "__main__":
     app.run(debug=True)
