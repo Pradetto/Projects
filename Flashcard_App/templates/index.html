@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block head %} 
+<title>Will this work</title>
+{% endblock %}
+
+{% block body %} 
+<div class ="content">
+    <h1>Flash Card Master</h1>
+
+    <table>
+        <tr> 
+            <th>Task</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td> {{ task.content }}</td>
+                <td>{{ task.question }}</td>
+                <td>
+                    <a href="">Delete</a>
+                    <br>
+                    <a href="">Update</a> 
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <form actions="/" method="POST">
+        <input type="text" name="content" id="content">
+        <input type="submit" value="Add Task">
+
+    </form>
+</div>
+{% endblock %}
